@@ -1,8 +1,12 @@
 name: Publicar versão
 
+# Dispara quando uma etiqueta v* é enviada OU quando você publica uma Release pelo site do GitHub
+# (Releases → Draft a new release). Nos dois casos o zip para download é montado e anexado sozinho.
 on:
   push:
     tags: ["v*"]
+  release:
+    types: [published]
 
 permissions:
   contents: write
@@ -11,21 +15,30 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Montar o pacote para download
+      - name: Descobrir a versão
         run: |
-          NOME="minerador-do-debian-${GITHUB_REF_NAME}"
-          git archive --format=zip --prefix="${NOME}/" -o "${NOME}.zip" HEAD
-          echo "NOME=${NOME}" >> "$GITHUB_ENV"
+          TAG="${{ github.event.release.tag_name }}"
+          [ -n "$TAG" ] || TAG="${GITHUB_REF_NAME}"
+          echo "TAG=${TAG}" >> "$GITHUB_ENV"
+          echo "NOME=minerador-do-debian-${TAG}" >> "$GITHUB_ENV"
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.TAG }}
+      - name: Montar o pacote para download
+        run: git archive --format=zip --prefix="${NOME}/" -o "${NOME}.zip" HEAD
       - name: Notas da versão (do CHANGELOG)
         run: |
-          V="${GITHUB_REF_NAME#v}"
+          V="${TAG#v}"
           awk -v v="$V" 'index($0,"## ["v"]")==1{f=1;next} /^## \[/{f=0} f' CHANGELOG.md > notas.md
           [ -s notas.md ] || echo "Veja o CHANGELOG.md." > notas.md
-      - name: Criar a release
+      - name: Criar ou completar a release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          EXTRA=""
-          case "$GITHUB_REF_NAME" in *beta*|*alpha*|*rc*) EXTRA="--prerelease";; esac
-          gh release create "$GITHUB_REF_NAME" "${NOME}.zip" --title "🐉 Minerador do Debian ${GITHUB_REF_NAME}" --notes-file notas.md $EXTRA
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" "${NOME}.zip" --clobber
+          else
+            EXTRA=""
+            case "$TAG" in *beta*|*alpha*|*rc*) EXTRA="--prerelease";; esac
+            gh release create "$TAG" "${NOME}.zip" --title "🐉 Minerador do Debian ${TAG}" --notes-file notas.md $EXTRA
+          fi
