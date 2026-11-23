@@ -1,130 +1,187 @@
 <div align="center">
 
-# 🐉 Minerador do Debian
+<img src="docs/banner.png" alt="Minerador do Debian" width="100%">
 
-**Acha a oferta escalada, sobe a campanha e mostra o ROI real de cada criativo, num site só.**
+**Português** · [English](README.en.md)
 
-[![Versão](https://img.shields.io/github/v/release/AlvaroBaarros/minerador-do-debian?include_prereleases&label=vers%C3%A3o&color=22c55e)](https://github.com/AlvaroBaarros/minerador-do-debian/releases)
-![Beta](https://img.shields.io/badge/fase-beta-16a34a)
-![Windows · macOS · Linux](https://img.shields.io/badge/Windows%20%C2%B7%20macOS%20%C2%B7%20Linux-4ade80)
-[![Testes](https://github.com/AlvaroBaarros/minerador-do-debian/actions/workflows/testes.yml/badge.svg)](https://github.com/AlvaroBaarros/minerador-do-debian/actions/workflows/testes.yml)
-[![Licença](https://img.shields.io/badge/licen%C3%A7a-uso%20gr%C3%A1tis-15803d)](LICENSE)
+[![Release](https://img.shields.io/github/v/release/AlvaroBaarros/minerador-do-debian?include_prereleases&label=vers%C3%A3o&color=22c55e)](https://github.com/AlvaroBaarros/minerador-do-debian/releases) [![Tests](https://github.com/AlvaroBaarros/minerador-do-debian/actions/workflows/testes.yml/badge.svg)](https://github.com/AlvaroBaarros/minerador-do-debian/actions/workflows/testes.yml) ![Windows · macOS · Linux](https://img.shields.io/badge/Windows%20%C2%B7%20macOS%20%C2%B7%20Linux-15803d) ![Node.js 18+](https://img.shields.io/badge/Node.js-18%2B-16a34a?logo=node.js&logoColor=white) [![License](https://img.shields.io/badge/licen%C3%A7a-uso%20gr%C3%A1tis-15803d)](LICENSE)
 
-![Página inicial do Minerador do Debian](docs/telas/inicio.png)
+### Acha a oferta escalada, sobe a campanha e mostra o ROI real de cada criativo, num site só.
 
 </div>
 
+---
+
 > [!NOTE]
-> **Versão beta e gratuita.** Use à vontade e conte o que achou nas [Issues](https://github.com/AlvaroBaarros/minerador-do-debian/issues). Ainda estamos testando com contas reais: deixe o piloto automático no modo **Sugerir** nos primeiros dias.
+> **Beta gratuito.** Baixe, use e conte o que achou nas [Issues](https://github.com/AlvaroBaarros/minerador-do-debian/issues). Enquanto testamos com contas reais, deixe o piloto automático no modo **Sugerir** nos primeiros dias.
 
-Três ferramentas que todo mundo do digital usa separado, juntas num site que roda no seu computador:
+## 🎯 Para que serve
 
-| | |
-|---|---|
-| 🧬 **Clonador** | Você digita um tema e ele varre a Biblioteca de Anúncios. Mostra as ofertas escaladas, quantos anúncios ativos cada uma tem, o funil, o checkout, a copy e os vídeos para baixar e estudar. |
-| 📣 **Gerenciador de anúncios** | Conecta na Meta e no Google, cria campanhas e tem um piloto automático que pausa o anúncio que gasta sem vender e escala o que está dando lucro, dentro dos limites que você define. |
-| 💰 **UTMFy** | Puxa as vendas da Hotmart, Kiwify, Cakto e outras pelas UTMs e mostra faturamento, lucro e ROI por campanha e criativo. O piloto automático decide em cima dessa venda real. |
+Quem vive de tráfego pago normalmente usa três ferramentas separadas: uma para espionar ofertas, o Gerenciador de Anúncios da Meta e uma ferramenta de UTMs para saber o que vende de verdade. O **Minerador do Debian** junta as três num app que roda no seu computador. Como elas conversam entre si, o piloto automático decide o que pausar e o que escalar com base na **venda real** que entrou no seu checkout, e não só no que o pixel acha.
+
+<table>
+<tr>
+<td width="33%" valign="top">
+
+### 🧬 Clonador
+Você digita um tema e o robô varre a Biblioteca de Anúncios.
+- Ofertas **escaladas**, escalando ou em teste
+- Anúncios ativos da oferta e do anunciante
+- Funil (VSL, quiz…), checkout e selo **estruturada**
+- Vídeos para baixar e copy para estudar
+- Filtros por nicho, país, palavra-chave e mínimo de anúncios
+
+</td>
+<td width="33%" valign="top">
+
+### 📣 Gerenciador de anúncios
+Conecta na **Meta** e no **Google Ads**.
+- Visão geral, campanhas e conjuntos com métricas
+- **Piloto automático**: pausa o que gasta sem vender e escala o que dá lucro
+- Modos Desligado, Sugerir e Automático, com teto de orçamento
+- Cria campanhas na Meta (sempre pausadas)
+- Gera ganchos, copies e roteiros modelando ofertas escaladas
+
+</td>
+<td width="33%" valign="top">
+
+### 💰 UTMFy
+Vendas reais ligadas a cada anúncio.
+- **Hotmart, Kiwify e Cakto** com leitor próprio (e outras plataformas)
+- Faturamento, gasto, **lucro, ROI, ROAS**, CPA real
+- Campanhas, vendas, criativos campeões e no prejuízo
+- Receptor 24h grátis na Cloudflare
+- Alimenta o piloto automático com o ROI real
+
+</td>
+</tr>
+</table>
+
+A página **Início** junta tudo: números do dia, **gráfico de ROI diário**, faturamento × gasto × lucro dos últimos 30 dias e o checklist do que falta conectar.
 
 ## 📸 Telas
 
-| Clonador | Gerenciador de anúncios | UTMFy |
-|---|---|---|
-| ![Clonador](docs/telas/clonador.png) | ![Gerenciador](docs/telas/gerenciador.png) | ![UTMFy](docs/telas/utmfy.png) |
+| Início | Clonador |
+|:---:|:---:|
+| ![Início](docs/telas/inicio.png) | ![Clonador](docs/telas/clonador.png) |
+| **Gerenciador de anúncios** | **UTMFy** |
+| ![Gerenciador](docs/telas/gerenciador.png) | ![UTMFy](docs/telas/utmfy.png) |
+
+## ⚙️ Como funciona
+
+```mermaid
+flowchart LR
+    subgraph PC["💻 Seu computador · Minerador do Debian"]
+        C["🧬 Clonador"]
+        G["📣 Gerenciador de anúncios<br/>+ piloto automático"]
+        U["💰 UTMFy<br/>vendas · lucro · ROI"]
+    end
+    BA[("Biblioteca de<br/>Anúncios da Meta")] -->|robô Playwright| C
+    G <-->|"Marketing API / Google Ads API"| ADS[("Meta Ads<br/>Google Ads")]
+    CK["Hotmart · Kiwify · Cakto…"] -->|webhooks| W["☁️ Receptor 24h<br/>Cloudflare Worker + D1"]
+    W -->|a cada 2 min| U
+    ADS -->|gasto por anúncio| U
+    U -->|ROI real de cada anúncio| G
+    C -->|ofertas escaladas para modelar| G
+```
+
+O piloto automático **não é uma IA tomando decisões no escuro**. Ele segue regras com números que você define, sempre olhando os últimos 3 dias + hoje:
+
+| Situação | Ação |
+|---|---|
+| Anúncio gastou 1,5× o CPA alvo sem vender | ⏸ Pausa |
+| Anúncio vende, mas com ROI real abaixo de −30% | ⏸ Pausa |
+| Campanha com 3+ vendas e ROI real acima de +30% | 📈 Sobe o orçamento em 20% (no máximo 1×/24h, até o teto) |
+| Campanha vendendo com ROI negativo | 📉 Reduz o orçamento em 20% |
+| Público vendo o mesmo anúncio mais de 3× | ⚠️ Avisa que é hora de criativo novo |
+
+Ele nunca pausa o último anúncio ativo de um conjunto, nunca apaga nada e só age sozinho nas campanhas que você marcar. Detalhes no [Manual](MANUAL.md).
+
+## 🛠️ Como foi feito
+
+O Minerador do Debian foi idealizado por **Debian** e desenvolvido com o **Claude (Anthropic)** como par de programação. A ideia foi fazer algo leve, que qualquer pessoa consiga rodar de graça: sem banco de dados para instalar, sem frameworks pesados e sem servidor pago.
+
+| | |
+|---|---|
+| **Linguagens** | JavaScript (Node.js 18+, ES Modules) · HTML5 · CSS3 · Bash · Batch |
+| **Servidor** | Node.js puro (`http`), sem frameworks, rodando só em `localhost` |
+| **Interface** | HTML/CSS/JS sem build, tema escuro verde, responsiva (computador e celular) |
+| **Robô do Clonador** | [Playwright](https://playwright.dev) + Chromium |
+| **Gráficos** | [Chart.js](https://www.chartjs.org) |
+| **Integrações** | Meta Marketing API v25 · Google Ads API v26 · webhooks Hotmart/Kiwify/Cakto · Claude API (opcional) |
+| **Nuvem (grátis, opcional)** | Cloudflare Workers + D1 (receptor de vendas) · GitHub Actions/Pages (mineração e testes) |
+| **Qualidade** | 90+ verificações automáticas e simulações das APIs, rodando em Windows, macOS e Linux a cada mudança |
+
+**Código em números:** cerca de 5.300 linhas, sendo 62% JavaScript no servidor, 21% JavaScript na interface e 14% HTML/CSS.
+
+```text
+servidor.mjs          servidor local (Node.js puro, sem frameworks) + rotas da API
+site/                 interface: index.html (menu lateral, Início), trafego.js, analytics.js
+scripts/              robô do Clonador (Playwright) e funções de leitura da Biblioteca
+trafego/              Gerenciador: clientes Meta/Google, motor de regras, agente, copy
+analytics/            UTMFy: leitura dos webhooks, atribuição por UTM, relatórios, Worker
+test/                 testes automáticos + simulações das APIs (Meta, Google, Claude, Biblioteca)
+.github/workflows/    testes em Windows/macOS/Linux, releases e mineração na nuvem
+```
 
 ## ⬇️ Baixar e instalar
 
-Você precisa do **Node.js 18 ou mais novo** (grátis): baixe a versão **LTS** em [nodejs.org](https://nodejs.org/pt-br/download) e instale avançando até o fim.
+1. Instale o **Node.js 18+** (grátis): versão **LTS** em [nodejs.org](https://nodejs.org/pt-br/download).
+2. Baixe o `.zip` mais recente em [**Releases**](https://github.com/AlvaroBaarros/minerador-do-debian/releases) e descompacte.
+3. Abra pelo arquivo do seu sistema:
 
-Depois baixe o Minerador na página de [**Releases**](https://github.com/AlvaroBaarros/minerador-do-debian/releases): o arquivo `minerador-do-debian-v….zip`. Descompacte numa pasta e siga o seu sistema:
+| Sistema | Como abrir |
+|---|---|
+| 🪟 **Windows** | Dois cliques em `iniciar-windows.bat`. Se aparecer “O Windows protegeu o computador”: **Mais informações → Executar assim mesmo**. |
+| 🍎 **macOS** (Apple Silicon e Intel) | Botão direito em `iniciar-mac.command` → **Abrir** → **Abrir** (só na primeira vez). Depois, dois cliques. |
+| 🐧 **Linux** | `./iniciar-linux.sh` |
 
-<details open>
-<summary><b>🪟 Windows</b></summary>
-
-1. Dê dois cliques em **`iniciar-windows.bat`**.
-2. Se aparecer “O Windows protegeu o computador”, clique em **Mais informações → Executar assim mesmo**.
-3. Na primeira vez ele instala tudo sozinho (alguns minutos). Depois o site abre em **http://localhost:3000**.
-</details>
-
-<details open>
-<summary><b>🍎 macOS (Apple Silicon e Intel)</b></summary>
-
-1. Na pasta, clique com o **botão direito** em **`iniciar-mac.command`** → **Abrir** → **Abrir**. Só na primeira vez: o macOS pede essa confirmação para arquivos baixados da internet.
-2. O Terminal abre, instala tudo sozinho (alguns minutos na primeira vez) e o site abre em **http://localhost:3000**.
-3. Nas próximas vezes é só dar dois cliques no `iniciar-mac.command`.
-
-> Se o macOS disser que o arquivo não pode ser aberto ou abrir num editor de texto: abra o **Terminal**, digite `bash ` (com espaço), arraste o arquivo `iniciar-mac.command` para a janela e aperte Enter.
-</details>
-
-<details>
-<summary><b>🐧 Linux</b></summary>
-
-```bash
-cd minerador-do-debian
-./iniciar-linux.sh
-```
-</details>
-
-**Para fechar:** feche a janela preta (Terminal) ou aperte `Ctrl+C` nela. **Para atualizar:** baixe a versão nova e descompacte por cima da pasta antiga. Suas configurações e dados continuam lá. O menu lateral avisa quando sai versão nova.
+Na primeira vez ele instala tudo sozinho (alguns minutos) e abre o app em **http://localhost:3000**. Para fechar, feche a janela preta. Para atualizar, descompacte a versão nova por cima: seus dados continuam lá, e o menu lateral avisa quando sai versão nova.
 
 ## 🚀 Primeiros passos
 
-A página **Início** mostra um checklist. Em resumo:
-
-1. **Gerenciador de anúncios → Contas de anúncio:** cole o token da Meta (e, se usar, os dados do Google Ads). O passo a passo está na própria tela.
-2. **UTMFy → Integrações:** ligue o receptor de vendas 24h (Cloudflare, grátis), cole os webhooks no seu checkout e as UTMs nos anúncios.
-3. **Gerenciador de anúncios → Piloto automático:** defina o CPA alvo, escolha **vendas reais** e marque com 🤖 as campanhas que ele pode mexer.
+1. **Gerenciador de anúncios → Contas de anúncio:** conecte a Meta (e o Google, se usar).
+2. **UTMFy → Integrações:** ligue o receptor de vendas, cole os webhooks no checkout e as UTMs nos anúncios.
+3. **Gerenciador de anúncios → Piloto automático:** defina o CPA alvo, escolha **vendas reais** e marque com 🤖 as campanhas.
 4. **Clonador:** digite um tema e clique em **Minerar agora**.
 
-Os detalhes de cada parte estão no [**Manual**](MANUAL.md).
-
-## 💸 Custa alguma coisa?
+## 💸 Custos
 
 | | |
 |---|---|
 | Minerador do Debian (beta) | **Grátis** |
-| Análise, piloto automático, mineração | Grátis (é cálculo, não usa IA nem tokens) |
-| APIs da Meta e do Google | Grátis |
-| Receptor de vendas na Cloudflare | Grátis no plano gratuito |
-| “Gerar copies” / “Analisar com Claude” | Grátis abrindo no seu Claude; ou centavos com chave de API (opcional) |
+| Análise, piloto automático e mineração | Grátis (é cálculo: não usa IA nem tokens) |
+| APIs da Meta e do Google · Cloudflare · GitHub | Grátis nos planos gratuitos |
+| Gerar copy / analisar com o Claude | Grátis abrindo no seu Claude, ou centavos com chave de API (opcional) |
 
 O único dinheiro que sai é a verba dos seus anúncios.
 
 ## 🔒 Segurança e privacidade
 
-- Tudo roda **no seu computador**. Tokens, campanhas e vendas ficam em `trafego.local.json` e `trafego-dados/`, que **nunca** vão para o GitHub.
-- O site só aceita comandos dele mesmo: outro site aberto no navegador não consegue mexer nas suas campanhas.
-- **Nunca** cole tokens, chaves ou dados de clientes em Issues.
+- Roda **no seu computador**. Tokens, campanhas e vendas ficam em `trafego.local.json` e `trafego-dados/`, que nunca vão para o GitHub.
+- O app só aceita comandos dele mesmo: outro site aberto no navegador não consegue mexer nas suas campanhas.
+- Nunca cole tokens ou dados de clientes em Issues.
 
-## ❓ Perguntas frequentes
+## 🗺️ Próximos passos
 
-<details>
-<summary><b>O piloto automático roda com o computador desligado?</b></summary>
-
-As vendas continuam chegando no receptor da Cloudflare, mas a análise e os ajustes só acontecem enquanto o Minerador estiver aberto. Uma versão 100% online está nos planos.
-</details>
-
-<details>
-<summary><b>O Clonador parou de trazer ofertas</b></summary>
-
-A Meta às vezes bloqueia acessos automatizados por um tempo. Espere algumas horas e tente de novo. Para ver o que está acontecendo, abra com `MOSTRAR=1` (Mac/Linux: `MOSTRAR=1 npm start`).
-</details>
-
-<details>
-<summary><b>Posso minerar na nuvem, sem deixar o computador ligado?</b></summary>
-
-Sim, pelo GitHub Actions (grátis): veja “Opção B” no [Manual](MANUAL.md). Para a mineração diária automática, crie a variável `MINERAR_AGENDADO=true` em *Settings → Secrets and variables → Actions → Variables* do seu fork.
-</details>
+- [ ] Versão online 24h (Cloudflare), com login
+- [ ] Interface em inglês
+- [ ] TikTok Ads
+- [ ] Mais checkouts com leitor próprio
+- [ ] Notificações de venda e de ações do piloto no celular
 
 ## ⚖️ Aviso
 
-O Minerador do Debian é um projeto independente e **não é afiliado** à Meta, ao Google, à Hotmart, à Kiwify, à Cakto nem a nenhuma outra plataforma citada. O Clonador lê a Biblioteca de Anúncios pública; os termos de uso da Meta não permitem coleta automatizada, então use com moderação e por sua conta. Use os vídeos e copies para **estudar e modelar** ofertas: republicar material de outras pessoas pode gerar denúncia de direitos autorais e bloqueio da sua conta de anúncios. Nenhum resultado é garantido.
+Projeto independente, **sem afiliação** com Meta, Google, Hotmart, Kiwify, Cakto ou outras plataformas citadas. O Clonador lê a Biblioteca de Anúncios pública, e os termos da Meta não permitem coleta automatizada: use com moderação e por sua conta. Use vídeos e copies para **estudar e modelar**, não para republicar. Nenhum resultado é garantido.
 
 ## 📄 Licença
 
-**Uso grátis, inclusive no seu próprio negócio.** O que não pode, sem autorização: vender, alugar, revender ou oferecer o Minerador como serviço. Texto completo em [LICENSE](LICENSE) (PolyForm Noncommercial 1.0.0 + permissão adicional).
+**Uso grátis, inclusive no seu próprio negócio.** Sem autorização, não é permitido vender, alugar, revender ou oferecer o app como serviço. Veja [LICENSE](LICENSE) (PolyForm Noncommercial 1.0.0 + permissão adicional).
 
 <div align="center">
 
 **🐉 Feito por Debian**
+
+<sub>Minerador do Debian · minerador-do-debian</sub>
 
 </div>
