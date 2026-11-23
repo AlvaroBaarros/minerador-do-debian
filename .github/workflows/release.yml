@@ -1,0 +1,31 @@
+name: Publicar versão
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Montar o pacote para download
+        run: |
+          NOME="minerador-do-debian-${GITHUB_REF_NAME}"
+          git archive --format=zip --prefix="${NOME}/" -o "${NOME}.zip" HEAD
+          echo "NOME=${NOME}" >> "$GITHUB_ENV"
+      - name: Notas da versão (do CHANGELOG)
+        run: |
+          V="${GITHUB_REF_NAME#v}"
+          awk -v v="$V" 'index($0,"## ["v"]")==1{f=1;next} /^## \[/{f=0} f' CHANGELOG.md > notas.md
+          [ -s notas.md ] || echo "Veja o CHANGELOG.md." > notas.md
+      - name: Criar a release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          EXTRA=""
+          case "$GITHUB_REF_NAME" in *beta*|*alpha*|*rc*) EXTRA="--prerelease";; esac
+          gh release create "$GITHUB_REF_NAME" "${NOME}.zip" --title "🐉 Minerador do Debian ${GITHUB_REF_NAME}" --notes-file notas.md $EXTRA
