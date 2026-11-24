@@ -737,7 +737,7 @@ window.MO={T,LOCALE,toast,ofertas:()=>OFERTAS,ir:(r)=>ir(r),sincronizarMenu:(r)=
 let chIni1=null,chIni2=null;
 const SIMB={BRL:"R$",USD:"US$",EUR:"€",GBP:"£"};
 const brlI=n=>(n===null||n===undefined||isNaN(n))?"–":(SIMB[window.MO_MOEDA]||"R$")+" "+Number(n).toLocaleString(LOCALE(),{minimumFractionDigits:2,maximumFractionDigits:2});
-const pctI=(n,s)=>(n===null||n===undefined||isNaN(n))?"–":(s&&n>0?"+":"")+n.toFixed(1).replace(".",",")+"%";
+const pctI=(n,s)=>(n===null||n===undefined||isNaN(n))?"–":(s&&n>0?"+":"")+n.toFixed(1).replace(".",LOCALE()==="en-US"?".":",")+"%";
 const corI=n=>n>0?"pos":n<0?"neg":"";
 async function apiI(u){const r=await fetch(u,{headers:{"X-Minerador":"1"},cache:"no-store"});if(!r.ok)throw new Error("erro");return r.json();}
 async function renderInicio(){
@@ -745,7 +745,7 @@ async function renderInicio(){
   const escaladas=OFERTAS.filter(o=>o.status==="escalada");
   const blocoClonador=`<div class="ibox"><h3>🧬 Clonador</h3>
     <div class="minilista"><div><span>Ofertas mineradas</span><b>${nf.format(OFERTAS.length)}</b></div><div><span>Escaladas</span><b class="pos">${nf.format(escaladas.length)}</b></div><div><span>Estruturadas</span><b>${nf.format(OFERTAS.filter(o=>o.estrutura&&o.estrutura.estruturada).length)}</b></div></div>
-    <div style="margin-top:10px;font-size:13px">${escaladas.sort((a,b)=>(b.pontuacao||0)-(a.pontuacao||0)).slice(0,3).map(o=>`<div style="margin-top:6px">🔥 <b>${esc(o.anunciante)}</b> <span class="note">${esc(o.titulo||o.dominio||"")} · ${o.anunciosOferta} anúncios</span></div>`).join("")||`<span class="note">Minere um tema para ver as ofertas escaladas.</span>`}</div>
+    <div style="margin-top:10px;font-size:13px">${escaladas.sort((a,b)=>(b.pontuacao||0)-(a.pontuacao||0)).slice(0,3).map(o=>`<div style="margin-top:6px">🔥 <b>${esc(o.anunciante)}</b> <span class="note"><span class="notr">${esc(o.titulo||o.dominio||"")}</span> · <span>${o.anunciosOferta} anúncios</span></span></div>`).join("")||`<span class="note">Minere um tema para ver as ofertas escaladas.</span>`}</div>
     <div style="display:flex;gap:8px;margin-top:12px"><input id="iniKw" placeholder="minerar um tema…"><button class="btn sm primary" id="iniMinerar">⛏️</button></div></div>`;
   if(!LOCAL){
     el.innerHTML=`<div class="hello"><h1>Bem-vindo ao <span>Minerador do Debian</span> 🐉</h1></div><div class="ini-3">${blocoClonador}<div class="ibox" style="grid-column:span 2"><h3>💻 Gerenciador de anúncios e UTMFy</h3><p class="note">Essas duas partes rodam no seu computador porque usam as suas contas de anúncio e as suas vendas. Abra pelo <b>iniciar-windows.bat</b> ou <b>iniciar-mac.command</b> e use em <b>http://localhost:3000</b>.</p></div></div>`;
@@ -773,7 +773,7 @@ async function renderInicio(){
       <div class="ik"><div class="l">Gasto hoje</div><div class="v">${brlI(t.gasto)}</div></div>
       <div class="ik"><div class="l">Lucro hoje</div><div class="v ${corI(t.lucro)}">${brlI(t.lucro)}</div></div>
       <div class="ik"><div class="l">ROI hoje</div><div class="v ${corI(t.roi)}">${pctI(t.roi,true)}</div></div>
-      <div class="ik"><div class="l">ROAS hoje</div><div class="v">${t.roas?t.roas.toFixed(2).replace(".",",")+"x":"–"}</div></div>
+      <div class="ik"><div class="l">ROAS hoje</div><div class="v">${t.roas?t.roas.toFixed(2).replace(".",LOCALE()==="en-US"?".":",")+"x":"–"}</div></div>
       <div class="ik"><div class="l">Lucro 30 dias</div><div class="v ${corI(mes&&mes.total.lucro)}">${brlI(mes&&mes.total.lucro)}</div><div class="s">ROI ${pctI(mes&&mes.total.roi,true)}</div></div>
     </div>
     <div class="ini-g">
